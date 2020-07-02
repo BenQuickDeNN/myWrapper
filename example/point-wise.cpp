@@ -68,19 +68,19 @@ int main()
     kernel_exec(my_5f, sizeof(float) * 2.0, 9.0);
 
     std::cout << "----------------auto_vec_d----------------" << std::endl; 
-    kernel_exec(auto_vec_2d, sizeof(float) * 2.0, 2.0);
-    kernel_exec(auto_vec_5d, sizeof(float) * 2.0, 5.0);
-    kernel_exec(auto_vec_5d, sizeof(float) * 2.0, 9.0);
+    kernel_exec(auto_vec_2d, sizeof(double) * 2.0, 2.0);
+    kernel_exec(auto_vec_5d, sizeof(double) * 2.0, 5.0);
+    kernel_exec(auto_vec_5d, sizeof(double) * 2.0, 9.0);
 
     std::cout << "----------------vecclass_d----------------" << std::endl; 
-    kernel_exec(vecclass_2d, sizeof(float) * 2.0, 2.0);
-    kernel_exec(vecclass_5d, sizeof(float) * 2.0, 5.0);
-    kernel_exec(vecclass_5d, sizeof(float) * 2.0, 9.0);
+    kernel_exec(vecclass_2d, sizeof(double) * 2.0, 2.0);
+    kernel_exec(vecclass_5d, sizeof(double) * 2.0, 5.0);
+    kernel_exec(vecclass_5d, sizeof(double) * 2.0, 9.0);
 
     std::cout << "----------------my_d----------------" << std::endl;
-    kernel_exec(my_2d, sizeof(float) * 2.0, 2.0);
-    kernel_exec(my_5d, sizeof(float) * 2.0, 5.0);
-    kernel_exec(my_5d, sizeof(float) * 2.0, 9.0);
+    kernel_exec(my_2d, sizeof(double) * 2.0, 2.0);
+    kernel_exec(my_5d, sizeof(double) * 2.0, 5.0);
+    kernel_exec(my_5d, sizeof(double) * 2.0, 9.0);
 
     return 0;
 }
