@@ -9,5 +9,6 @@
 #include "data_model/vec.hpp"
 #include "utilities/configure.hpp"
 #include "utilities/timer.hpp"
+#include "utilities/performance_tools.hpp"
 
 #endif

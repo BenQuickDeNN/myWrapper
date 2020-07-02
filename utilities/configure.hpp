@@ -21,10 +21,15 @@
 
 #include <cstdlib>
 
+// 强制内联
+#define force_inline inline __attribute__((always_inline))
+
 // single and double type definition
 #if defined(__AVX512F__)
     typedef __m512 mmf;
     typedef __m512d mmd;
+    #define STRIDEF 16
+    #define STRIDED 8
     #define _vloadf(arr) _mm512_loadu_ps(arr)
     #define _vloadd(arr) _mm512_loadu_pd(arr)
     #define _vstoref(arr, mm)  _mm512_storeu_ps(arr, mm)
@@ -42,6 +47,8 @@
 #elif defined(__AVX__)
     typedef __m256 mmf;
     typedef __m256d mmd;
+    #define STRIDEF 8
+    #define STRIDED 4
     #define _vloadf(arr) _mm256_loadu_ps(arr)
     #define _vloadd(arr) _mm256_loadu_pd(arr)
     #define _vstoref(arr, mm)  _mm256_storeu_ps(arr, mm)
@@ -59,6 +66,8 @@
 #elif defined(__SSE__)
     typedef __m128 mmf;
     typedef __m128d mmd;
+    #define STRIDEF 4
+    #define STRIDED 2
     #define _vloadf(arr) _mm_loadu_ps(arr)
     #define _vloadd(arr) _mm_loadu_pd(arr)
     #define _vstoref(arr, mm)  _mm_storeu_ps(arr, mm)
@@ -76,10 +85,12 @@
 #else
     typedef float mmf;
     typedef double mmd;
-    #define _vloadf(arr) *arr
-    #define _vloadd(arr) *arr
-    #define _vstoref(arr, mm)  *arr=mm
-    #define _vstored(arr, mm)  *arr=mm
+    #define STRIDEF 1
+    #define STRIDED 1
+    #define _vloadf(arr) *(arr)
+    #define _vloadd(arr) *(arr)
+    #define _vstoref(arr, mm)  *(arr)=mm
+    #define _vstored(arr, mm)  *(arr)=mm
     #define _vset1f(f) f
     #define _vset1d(d) d
     #define _vaddf(mm1, mm2) mm1+mm2

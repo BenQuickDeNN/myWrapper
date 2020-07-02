@@ -1,0 +1,3 @@
+[submodule "example/vecclass"]
+	path = example/vecclass
+	url = https://github.com/vectorclass/version2.git
