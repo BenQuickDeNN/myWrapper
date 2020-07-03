@@ -110,7 +110,7 @@ inline void auto_vec_2f()
 {
     for (size_t t = 0; t < STEP; t++)
     {
-        #pragma omp parallel for
+        //#pragma omp parallel for
         for (size_t i = 0; i < RANGE; i++)
             wf[i] = 1.0f * rf[i] + 0.5f;
     }
@@ -120,7 +120,7 @@ inline void auto_vec_5f()
 {
     for (size_t t = 0; t < STEP; t++)
     {
-        #pragma omp parallel for
+        //#pragma omp parallel for
         for (size_t i = 0; i < RANGE; i++)
             wf[i] = 2.0f * rf[i] * rf[i] + 3.0f * rf[i] + 1.0f;
     }
@@ -130,7 +130,7 @@ inline void auto_vec_9f()
 {
     for (size_t t = 0; t < STEP; t++)
     {
-        #pragma omp parallel for
+        //#pragma omp parallel for
         for (size_t i = 0; i < RANGE; i++)
             wf[i] = 3.0f * rf[i] * rf[i] * rf[i] + 2.0f * rf[i] * rf[i] + 1.0f * rf[i] + 0.5f;
     }
@@ -144,7 +144,7 @@ inline void vecclass_2f()
     Vec8f mm3(0.5f);
     for (size_t t = 0; t < STEP; t++)
     {
-        #pragma omp parallel for private(mm1, mm2, mm3)
+        //#pragma omp parallel for private(mm1)
         for (size_t i = 0; i < RANGE; i += 8)
         {
             mm1.load(rf + i);
@@ -163,7 +163,7 @@ inline void vecclass_5f()
     Vec8f mm4(1.0f);
     for (size_t t = 0; t < STEP; t++)
     {
-        #pragma omp parallel for private(mm1, mm2, mm3, mm4)
+        //#pragma omp parallel for private(mm1)
         for (size_t i = 0; i < RANGE; i += 8)
         {
             mm1.load(rf + i);
@@ -183,7 +183,7 @@ inline void vecclass_9f()
     Vec8f mm5(0.5f);
     for (size_t t = 0; t < STEP; t++)
     {
-        #pragma omp parallel for private(mm1, mm2, mm3, mm4, mm5)
+        //#pragma omp parallel for private(mm1)
         for (size_t i = 0; i < RANGE; i += 8)
         {
             mm1.load(rf + i);
@@ -200,7 +200,7 @@ inline void my_2f()
     mm3 = _vset1f(0.5f);
     for (size_t t = 0; t < STEP; t++)
     {
-        #pragma omp parallel for private(mm1, mm2, mm3)
+        //#pragma omp parallel for private(mm1)
         for (size_t i = 0; i < RANGE; i += STRIDEF)
         {
             mm1 = _vloadf(rf + i);
@@ -218,7 +218,7 @@ inline void my_5f()
     mm4 = _vset1f(1.0f);
     for (size_t t = 0; t < STEP; t++)
     {
-        #pragma omp parallel for private(mm1, mm2, mm3, mm4)
+        //#pragma omp parallel for private(mm1)
         for (size_t i = 0; i < RANGE; i += STRIDEF)
         {
             mm1 = _vloadf(rf + i);
@@ -243,7 +243,7 @@ inline void my_9f()
     mm5 = _vset1f(0.5f);
     for (size_t t = 0; t < STEP; t++)
     {
-        #pragma omp parallel for private(mm1, mm2, mm3, mm4, mm5)
+        //#pragma omp parallel for private(mm1)
         for (size_t i = 0; i < RANGE; i += STRIDEF)
         {
             mm1 = _vloadf(rf + i);
@@ -284,7 +284,7 @@ inline void auto_vec_2d()
 {
     for (size_t t = 0; t < STEP; t++)
     {
-        #pragma omp parallel for
+        //#pragma omp parallel for
         for (size_t i = 0; i < RANGE; i++)
             wd[i] = 1.0 * rd[i] + 0.5;
     }
@@ -294,7 +294,7 @@ inline void auto_vec_5d()
 {
     for (size_t t = 0; t < STEP; t++)
     {
-        #pragma omp parallel for
+        //#pragma omp parallel for
         for (size_t i = 0; i < RANGE; i++)
             wd[i] = 2.0 * rd[i] * rd[i] + 3.0 * rd[i] + 1.0;
     }
@@ -304,7 +304,7 @@ inline void auto_vec_9d()
 {
     for (size_t t = 0; t < STEP; t++)
     {
-        #pragma omp parallel for
+        //#pragma omp parallel for
         for (size_t i = 0; i < RANGE; i++)
             wd[i] = 3.0 * rd[i] * rd[i] * rd[i] + 2.0 * rd[i] * rd[i] + 1.0 * rd[i] + 0.5;
     }
@@ -316,7 +316,7 @@ inline void vecclass_2d()
     Vec4d mm1, mm2(1.0), mm3(0.5);
     for (size_t t = 0; t < STEP; t++)
     {
-        #pragma omp parallel for private(mm1, mm2, mm3)
+        //#pragma omp parallel for private(mm1)
         for (size_t i = 0; i < RANGE; i += 4)
         {
             mm1.load(rd + i);
@@ -332,7 +332,7 @@ inline void vecclass_5d()
     Vec4d mm1, mm2(2.0), mm3(3.0), mm4(1.0);
     for (size_t t = 0; t < STEP; t++)
     {
-        #pragma omp parallel for private(mm1, mm2, mm3, mm4)
+        //#pragma omp parallel for private(mm1)
         for (size_t i = 0; i < RANGE; i += 4)
         {
             mm1.load(rd + i);
@@ -348,7 +348,7 @@ inline void vecclass_9d()
     Vec4d mm1, mm2(3.0), mm3(2.0), mm4(1.0), mm5(0.5);
     for (size_t t = 0; t < STEP; t++)
     {
-        #pragma omp parallel for private(mm1, mm2, mm3, mm4, mm5)
+        //#pragma omp parallel for private(mm1)
         for (size_t i = 0; i < RANGE; i += 4)
         {
             mm1.load(rd + i);
@@ -365,7 +365,7 @@ inline void my_2d()
     mm3 = _vset1d(0.5);
     for (size_t t = 0; t < STEP; t++)
     {
-        #pragma omp parallel for private(mm1, mm2, mm3)
+        //#pragma omp parallel for private(mm1)
         for (size_t i = 0; i < RANGE; i += STRIDED)
         {
             mm1 = _vloadd(rd + i);
@@ -383,7 +383,7 @@ inline void my_5d()
     mm4 = _vset1d(1.0);
     for (size_t t = 0; t < STEP; t++)
     {
-        #pragma omp parallel for private(mm1, mm2, mm3, mm4)
+        //#pragma omp parallel for private(mm1)
         for (size_t i = 0; i < RANGE; i += STRIDED)
         {
             mm1 = _vloadd(rd + i);
@@ -408,7 +408,7 @@ inline void my_9d()
     mm5 = _vset1d(0.5f);
     for (size_t t = 0; t < STEP; t++)
     {
-        #pragma omp parallel for private(mm1, mm2, mm3, mm4, mm5)
+        //#pragma omp parallel for private(mm1)
         for (size_t i = 0; i < RANGE; i += STRIDED)
         {
             mm1 = _vloadd(rd + i);
